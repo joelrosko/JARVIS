@@ -1,0 +1,10 @@
+.dashboard-paper {
+    cursor: pointer;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.12)
+}
+
+.dashboard-paper:hover {
+    border-color: white
+}
