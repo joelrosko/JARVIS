@@ -4,6 +4,7 @@ import Box from '@mui/system/Box';
 import { Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import LogInPage from './pages/LogInPage';
+import RegisterPage from './pages/RegisterPage';
 
 const darkTheme = createTheme({
   palette: {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
+          <Route path='/register' element={<RegisterPage />} />
         </Routes>
       </Box>
       <Box sx={{display: {xs: 'flex', md: 'none'}, width: '80%', margin: '0 auto'}}>
@@ -34,6 +36,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
+          <Route path='/register' element={<RegisterPage />} />
         </Routes>
       </Box>
     </ThemeProvider>

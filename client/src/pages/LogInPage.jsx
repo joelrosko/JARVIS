@@ -31,7 +31,8 @@ const LogInPage = () => {
         e.preventDefault();
         logIn(userName, psw);
     };
-  return (
+    
+    return (
         <Grid container justifyContent='center'>
             <Box component='form' onSubmit={onSubmit} sx={{mt:8, p: 2, height: 450, width: '25%', minWidth: 300, border: 1, borderColor: 'grey.500', borderRadius: 2, bgcolor:'#212121', '&:hover':{borderColor: 'white'}}}>
                 <Grid item sx={{display:'flex', flexDirection: 'row', justifyContent: 'center', mt: 4}}>
@@ -55,7 +56,7 @@ const LogInPage = () => {
                     <Buttons type='submit' label='Sign in' />
                 </Grid>
                 <Grid item sx={{display:'flex', flexDirection:'row', justifyContent:'center', mt: 1}}>
-                    <Link href="#" underline="hover">
+                    <Link onClick={() => navigate('/register')} underline="hover" sx={{cursor: 'pointer'}}>
                         <Typography>Create an account</Typography>
                     </Link>
                 </Grid>
