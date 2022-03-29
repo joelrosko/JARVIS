@@ -1,0 +1,5 @@
+.note-list {
+    width: 100%;
+    overflow: auto;
+    max-height: 250px;
+}

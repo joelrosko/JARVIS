@@ -2,6 +2,7 @@ import './App.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Box from '@mui/system/Box';
 import { Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar/Navbar';
 import HomePage from './pages/HomePage';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Navbar />
       <Box sx={{display: {xs: 'none', md: 'flex'}, width: '70%', margin: '0 auto'}}>
         <Routes>
           <Route path='/' element={<HomePage />} />
