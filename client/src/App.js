@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import HomePage from './pages/HomePage';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const darkTheme = createTheme({
   palette: {
@@ -19,9 +20,6 @@ const darkTheme = createTheme({
 });
 
 function App() {
-
-  const loggedIn = false;
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Navbar />
@@ -31,6 +29,7 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Box>
       <Box sx={{display: {xs: 'flex', md: 'none'}, width: '80%', margin: '0 auto'}}>
@@ -39,6 +38,7 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Box>
     </ThemeProvider>
