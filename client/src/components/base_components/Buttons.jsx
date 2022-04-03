@@ -18,7 +18,7 @@ const Buttons = ({ variant, type, color, label, onPress }) => {
 
 Buttons.defaultProps = {
     variant: 'outlined',
-    type: null,
+    type: 'button',
     color: 'primary',
     label: 'Undefined',
     onPress: () => {}
