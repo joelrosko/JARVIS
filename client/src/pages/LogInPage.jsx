@@ -48,7 +48,7 @@ const LogInPage = () => {
                     <InputField label='Password' password={true} />
                 </Grid>
                 <Grid item sx={{display:'flex', flexDirection:'row', justifyContent:'flex-end'}}>
-                    <Link href="#" underline="hover">
+                    <Link onClick={() => navigate('/resetpassword')} underline="hover" sx={{cursor: 'pointer'}}>
                         <Typography>Forgot password?</Typography>
                     </Link>
                 </Grid>

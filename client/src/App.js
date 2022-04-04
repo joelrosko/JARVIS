@@ -7,6 +7,7 @@ import Notification from './components/Notification/Notification';
 import HomePage from './pages/HomePage';
 import LogInPage from './pages/LogInPage';
 import RegisterPage from './pages/RegisterPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { useState } from 'react';
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
           <Route path='/register' element={<RegisterPage addNotification={setUserNotification} />} />
+          <Route path='/resetpassword' element={<ForgotPasswordPage addNotification={setUserNotification} />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Box>
@@ -55,6 +57,7 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/login' element={<LogInPage />} />
           <Route path='/register' element={<RegisterPage addNotification={setUserNotification} />} />
+          <Route path='/resetpassword' element={<ForgotPasswordPage addNotification={setUserNotification} />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Box>
