@@ -6,10 +6,10 @@ const addUser = async (userName, email, password) => {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./../db/jarvis.db');
         db.get('SELECT * FROM users WHERE name = ? LIMIT 1', [userName], async (err, row) => {
-            if (err) reject({message: 'Lost connection to database, please try again'});
+            if (err) reject('Lost connection to database, please try again');
 
             if (row) {
-                reject({error: 'User already exists'});
+                reject('User already exists');
             } else {
                 const userID = uuidv4();
                 try {
@@ -31,4 +31,34 @@ const addUser = async (userName, email, password) => {
     });
 }
 
-module.exports = { addUser };
+const resetUserPassword = async (userName) => {
+    return new Promise((resolve, reject) => {
+        const db = new sqlite3.Database('./../db/jarvis.db');
+        db.get('SELECT * FROM users WHERE name = ? LIMIT 1', [userName], async (err, row) => {
+            if (err) reject('Lost connection to database, please try again');
+
+            if (!row) {
+                reject('User does not exists');
+            } else {
+                const newPassword = Math.random().toString(36).slice(-8);
+                try {
+                    const hash = await generateHash(newPassword);
+                    db.run('UPDATE users SET psw = ? WHERE name = ?', [hash, userName], (err) => {
+                        if (err) reject('Password not updated in database');
+    
+                        resolve({
+                            password: newPassword,
+                            message: 'Password updated'
+                        });
+                    });
+                }
+                catch (err) {
+                    reject(err);
+                }
+                
+            }
+        });
+    });
+}
+
+module.exports = { addUser, resetUserPassword };

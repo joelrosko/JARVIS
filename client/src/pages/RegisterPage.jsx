@@ -37,10 +37,10 @@ const RegisterPage = ({ addNotification }) => {
         });
 
         const data = await res.json();
-        if (data.message.hasOwnProperty('error')) {
+        if (data.hasOwnProperty('error')) {
             addNotification({
                 show: true,
-                message: data.message.error,
+                message: data.error,
                 type: 'error'
             });
             setUserName('');
@@ -61,7 +61,7 @@ const RegisterPage = ({ addNotification }) => {
         e.preventDefault();
 
         if (userName && email && password && repeatPassword) {
-            if (password == repeatPassword) {
+            if (password === repeatPassword) {
                 registerUser();
             } else {
                 addNotification({
