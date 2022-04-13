@@ -10,21 +10,46 @@ import { useState } from 'react';
 
 const ForgotPasswordPage = ({ addNotification }) => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState('');
 
-    const resetPassword = () => {
-        return;
+    const resetPassword = async () => {
+        const res = await fetch('api/users/resetpassword', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                userName
+            })
+        });
+
+        const data = await res.json();
+        if (data.hasOwnProperty('error')) {
+            addNotification({
+                show: true,
+                message: data.error,
+                type: 'error'
+            });
+            setUserName('');
+        } else {
+            addNotification({
+                show: true,
+                message: data.message,
+                type: 'success'
+            });
+            navigate('/login')
+        }
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (email) {
+        if (userName) {
             resetPassword();
         } else {
             addNotification({
                 show: true,
-                message: 'Please enter email',
+                message: 'Please enter username',
                 type: 'info'
             });
         }
@@ -44,7 +69,7 @@ const ForgotPasswordPage = ({ addNotification }) => {
                     <Typography variant='h5' sx={{fontWeight: 'regular', color: 'white'}}>Reset password</Typography>
                 </Grid>
                 <Grid item sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center', mt: 6}}>
-                    <InputField label='Email' value={email} setValue={setEmail} type='email' />
+                    <InputField label='Username' value={userName} setValue={setUserName} type='email' />
                 </Grid>
                 <Grid item sx={{display:'flex', flexDirection:'row', justifyContent:'center', mt: 6}}>
                     <Buttons type='submit' label='Reset password' onPress={onSubmit} />
