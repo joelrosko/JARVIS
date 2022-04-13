@@ -5,6 +5,7 @@ import { green, red } from '@mui/material/colors';
 
 const StartButton = () => {
     const [activeIcon, setActiveIcon] = useState(false);
+    let currentIcon;
 
     const defaultStyle = {
         position: 'fixed',
@@ -29,10 +30,10 @@ const StartButton = () => {
     let style = {...defaultStyle, ...playStyle };
 
     if (activeIcon) {
-        var currentIcon = <PowerSettingsNewRoundedIcon sx={{fontSize: 45}} />
+        currentIcon = <PowerSettingsNewRoundedIcon sx={{fontSize: 45}} />
         style = {...defaultStyle, ...stopStyle};
     } else {
-        var currentIcon = <PowerSettingsNewRoundedIcon sx={{fontSize: 45}} />
+        currentIcon = <PowerSettingsNewRoundedIcon sx={{fontSize: 45}} />
         style = {...defaultStyle, ...playStyle};
     };
 

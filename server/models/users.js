@@ -61,4 +61,19 @@ const resetUserPassword = async (userName) => {
     });
 }
 
-module.exports = { addUser, resetUserPassword };
+const loginUser = async (userName) => {
+    return new Promise((resolve, reject) => {
+        const db = new sqlite3.Database('./../db/jarvis.db');
+        db.get('SELECT * FROM users WHERE name = ? LIMIT 1', [userName], async (err, row) => {
+            if (err) reject('Lost connection to database, please try again');
+
+            if (!row) {
+                reject('User does not exists');
+            } else {
+                resolve(row);
+            }
+        });
+    });
+}
+
+module.exports = { addUser, resetUserPassword, loginUser };
